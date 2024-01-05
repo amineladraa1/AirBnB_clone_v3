@@ -16,8 +16,8 @@ def call_storage():
 """
 
 if __name__ == "__main__":
-    host = os.getenv('HBNB_API_HOST') if \
-        os.getenv('HBNB_API_HOST') else '0.0.0.0'
-    port = os.getenv('HBNB_API_PORT') if \
-        os.getenv('HBNB_API_PORT') else 5000
+    HBNB_API_HOST = os.getenv('HBNB_API_HOST')
+    HBNB_API_PORT = os.getenv('HBNB_API_PORT')
+    host = HBNB_API_HOST if HBNB_API_HOST else '0.0.0.0'
+    port = HBNB_API_PORT if HBNB_API_PORT else 5000
     app.run(host=host, port=port)
