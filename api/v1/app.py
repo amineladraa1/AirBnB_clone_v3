@@ -10,10 +10,11 @@ app = Flask(__name__)
 app.register_blueprint(app_views)
 
 
-"""@app.teardown_appcontext
-def call_storage():
+@app.teardown_appcontext
+def call_storage(exception):
+    """Close Session"""
     storage.close()
-"""
+
 
 if __name__ == "__main__":
     HBNB_API_HOST = os.getenv('HBNB_API_HOST')
