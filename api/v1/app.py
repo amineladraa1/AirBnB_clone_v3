@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Status of your API"""
 from flask import Flask
+from flask import jsonify
 from models import storage
 from api.v1.views import app_views
 import os
@@ -12,6 +13,13 @@ app_host = os.getenv('HBNB_API_HOST', '0.0.0.0')
 port = int(os.getenv('HBNB_API_PORT', '5000'))
 app.register_blueprint(app_views)
 CORS(app, resources={'/*': {'origins': app_host}})
+
+
+@app.errorhandler(404)
+def not_found(e):
+    """404 error handling"""
+    return jsonify({"error": "Not found"}), 404
+
 
 @app.teardown_appcontext
 def call_storage(exception):
