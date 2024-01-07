@@ -8,7 +8,7 @@ from models import storage
 from models.user import User
 
 
-@app_views.route('/users', methods=['GET'])
+@app_views.route('/users', methods=['GET'], strict_slashes=False)
 @app_views.route('/users/<user_id>', methods=['GET'])
 def get_users(user_id=None):
     '''Gets user with the given id or all users.
@@ -47,7 +47,7 @@ def remove_user(user_id):
     raise NotFound()
 
 
-@app_views.route('/users', methods=['POST'])
+@app_views.route('/users', methods=['POST'], strict_slashes=False)
 def add_user():
     '''Adds new user.
     '''

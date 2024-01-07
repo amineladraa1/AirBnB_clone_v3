@@ -12,7 +12,8 @@ from models.state import State
 from models.user import User
 
 
-@app_views.route('/cities/<city_id>/places', methods=['GET', 'POST'])
+@app_views.route('/cities/<city_id>/places', methods=['GET', 'POST'],
+                 strict_slashes=False)
 @app_views.route('/places/<place_id>', methods=['GET', 'DELETE', 'PUT'])
 def handle_places(city_id=None, place_id=None):
     '''The method handler for the places endpoint.

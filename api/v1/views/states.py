@@ -12,8 +12,9 @@ ALLOWED_METHODS = ['GET', 'DELETE', 'POST', 'PUT']
 '''Methods allowed for the states endpoint.'''
 
 
-@app_views.route('/states', methods=ALLOWED_METHODS)
-@app_views.route('/states/<state_id>', methods=ALLOWED_METHODS)
+@app_views.route('/states', methods=ALLOWED_METHODS, strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=ALLOWED_METHODS,
+                 strict_slashes=False)
 def handle_states(state_id=None):
     '''The method handler for the states endpoint.
     '''

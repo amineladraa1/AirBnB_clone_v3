@@ -12,7 +12,7 @@ ALLOWED_METHODS = ['GET', 'DELETE', 'POST', 'PUT']
 '''Methods allowed for the amenities endpoint.'''
 
 
-@app_views.route('/amenities', methods=ALLOWED_METHODS)
+@app_views.route('/amenities', methods=ALLOWED_METHODS, strict_slashes=False)
 @app_views.route('/amenities/<amenity_id>', methods=ALLOWED_METHODS)
 def handle_amenities(amenity_id=None):
     '''The method handler for the amenities endpoint.
