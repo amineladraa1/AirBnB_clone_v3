@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """A file index, it contains route status"""
 from api.v1.views import app_views
-import json
+from flask import jsonify
 from models import storage
 from models.amenity import Amenity
 from models.base_model import BaseModel, Base
@@ -15,7 +15,7 @@ from models.user import User
 @app_views.route("/status", strict_slashes=False)
 def status():
     """Return a Json response"""
-    return json.dumps({"status": "OK"})
+    return jsonify({"status": "OK"}), 200
 
 
 @app_views.route("/stats", strict_slashes=False)
@@ -26,4 +26,4 @@ def stats():
     json_dic = {}
     for key, value in types.items():
         json_dic[key] = storage.count(value)
-    return json.dumps(json_dic)
+    return jsonify(json_dic), 200
